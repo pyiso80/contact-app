@@ -1,0 +1,10 @@
+services:
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: contacts
+      POSTGRES_PASSWORD: contacts
+      POSTGRES_DB: contacts
+    ports:
+      - 5432:5432
