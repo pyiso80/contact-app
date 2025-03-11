@@ -2,7 +2,7 @@
 {% block content %}
 <form action="/contacts" method="get" class="tool-bar">
     <label for="search">Search Term</label>
-    <input id="search" type="search" name="q" value=""/>
+    <input id="search" type="search" name="text" value="{{ text }}"/>
     <input type="submit" value="Search"/>
 </form>
 <table>
@@ -29,6 +29,18 @@
     {% endfor %}
     </tbody>
 </table>
+{% if contacts %}
+<div>
+    <span style="float: right">
+        Pages:
+        {% for num in page-nums %}
+            <a href="/contacts?text={{text}}&page={{num}}&limit=10">{{num}}</a>
+        {% endfor %}
+        Total records: {{ total_count }}
+    </span>
+</div>
+{% endif %}
+
 <p>
     <a href="/contacts/new">Add Contact</a>
 </p>

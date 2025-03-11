@@ -25,11 +25,12 @@
    ["/contacts/new"
     {:get  (partial contact-app/contacts-new-get _opts)
      :post (partial contact-app/contacts-new-post _opts)}]
-   ["/contacts/:id/edit"
-    {:get  (partial contact-app/contacts-edit-get _opts)
-     :post (partial contact-app/contacts-edit-post _opts)}]
-   ["/contacts/:id/view" {:get (partial contact-app/contacts-view _opts)}]
-   ["/contacts/:id/delete" {:post (partial contact-app/contacts-delete _opts)}]])
+   ["/contacts/validate-email" {:get (partial contact-app/contacts-validate-email _opts)}]
+   ["/contacts/:id"
+    ["/edit" {:get  (partial contact-app/contacts-edit-get _opts)
+              :post (partial contact-app/contacts-edit-post _opts)}]
+    ["/delete" {:delete (partial contact-app/contacts-delete _opts)}]
+    ["/view" {:get (partial contact-app/contacts-view _opts)}]]])
 
 (def route-data
   {:middleware
